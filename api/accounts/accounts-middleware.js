@@ -1,11 +1,37 @@
-exports.checkAccountPayload = (req, res, next) => {
-  // DO YOUR MAGIC
+const Accounts = require('../accounts/accounts-model')
+
+async function checkAccountPayload(req, res, next) {
+  try{
+
+  }catch{
+
+  }
 }
 
-exports.checkAccountNameUnique = (req, res, next) => {
-  // DO YOUR MAGIC
+async function checkAccountNameUnique(req, res, next)  {
+  try{
+
+  }catch{
+    
+  }
 }
 
-exports.checkAccountId = (req, res, next) => {
-  // DO YOUR MAGIC
+async function checkAccountId(req, res, next){
+  try{
+    const action = await Accounts.getById(req.params.id)
+    if(!action){
+      res.status(404).json({  message: "account not found"});
+    } else {
+      req.action = action
+      next()
+      }
+  }catch (err){
+    console.log(err)
+  }
 }
+
+module.exports = {
+  checkAccountPayload,
+  checkAccountNameUnique,
+  checkAccountId,
+};
