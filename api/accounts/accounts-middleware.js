@@ -4,7 +4,7 @@ const db = require('../../data/db-config')
 
 exports.checkAccountPayload = (req, res, next) => {
   const error = { status: 400}
-  const { name, budget} = req.body
+  const {name, budget} = req.body
   if(name === undefined || budget === undefined ) {
     error.message = 'name and budget are required'
   } else if (typeof name !== 'string'){
