@@ -13,17 +13,11 @@ router.get('/', async (req, res, next) => {
 })
 
 router.get('/:id', md.checkAccountId, async (req, res, next) => {
-  try{
-    const accounts = await Account.getById(req.params.id)
-    res.json(accounts)
-  } catch (err) {
-    next(err)
-  }
+  res.json(req.account)
 })
 
 router.post('/', md.checkAccountPayload, 
                  md.checkAccountNameUnique, (req, res, next) => {
-  // DO YOUR MAGIC 
   try{
     res.json('post account')
   } catch (err) {
